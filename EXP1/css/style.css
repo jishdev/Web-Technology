@@ -1,0 +1,3079 @@
+/* ==========================================================================
+   HASH '26 — TECHFEST WEBSITE
+   Complete Stylesheet
+   ========================================================================== */
+
+/* ==========================================================================
+   1. FONTS & GLOBAL RESETS
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap');
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #06080d;
+    font-family: 'Space Grotesk', sans-serif;
+    overflow-x: hidden;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   2. BACKGROUNDS (Global)
+   ========================================================================== */
+
+/* --- Homepage: Video Background --- */
+.global-video-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -10;
+}
+
+.background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.99) 100%);
+}
+
+/* --- All Other Pages: Static Gradient Background --- */
+.events-static-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -10;
+    background: radial-gradient(ellipse at 50% 0%, #0f1729 0%, #06080d 60%);
+}
+
+
+/* ==========================================================================
+   3. NAVIGATION
+   ========================================================================== */
+
+#navbar {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    width: fit-content;
+    padding: 16px 40px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.9);
+    background: rgba(20, 20, 30, 0.4);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 60px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+#navbar a {
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+#navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #00c2ff;
+    transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+    box-shadow: 0 0 10px rgba(0, 194, 255, 0.7);
+}
+
+#navbar a:hover {
+    color: #ffffff;
+}
+
+#navbar a:hover::after {
+    width: 100%;
+}
+
+/* --- Hamburger Menu Styles --- */
+.nav-toggle {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* ==========================================================================
+   3. NAVIGATION (Fully Responsive Setup)
+   ========================================================================== */
+
+#navbar {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: 16px 40px;
+    background: rgba(20, 20, 30, 0.4);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 60px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Base link typography styles shared across all viewports */
+.nav-links a {
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: #ffffff !important;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+/* --- Hamburger and Toggle (Hidden on Desktop) --- */
+.nav-toggle {
+    display: none;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+
+/* ==========================================
+   DESKTOP ONLY LAYOUT (Min-width: 769px)
+   ========================================== */
+@media (min-width: 769px) {
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;             /* Horizontal space between items on desktop */
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        background: #00c2ff;
+        transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+        box-shadow: 0 0 10px rgba(0, 194, 255, 0.7);
+    }
+
+    .nav-links a:hover {
+        color: #00c2ff !important;
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+}
+
+
+/* ==========================================
+   MOBILE ONLY LAYOUT (Max-width: 768px)
+   ========================================== */
+@media (max-width: 768px) {
+    #navbar {
+        top: 15px;
+        right: 15px;
+        left: auto;
+        transform: none;
+        flex-direction: column;
+        align-items: flex-end;
+        padding: 14px 18px;
+        border-radius: 30px;
+        min-width: 56px;
+        gap: 0;
+    }
+
+    .hamburger {
+        display: flex;       /* Reveal hamburger toggle icon on mobile screen */
+    }
+
+    /* Stack links vertically and hide them by default on mobile */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 16px;           /* Vertical spacing between items on mobile */
+        padding-bottom: 16px;
+        width: 100%;
+        order: -1;           /* Places links neatly above the menu button */
+    }
+
+    .nav-links a {
+        font-size: 0.95rem;
+        opacity: 0.85;
+    }
+
+    /* --- CHECKBOX INTERACTIONS --- */
+
+    /* Open menu drawer */
+    .nav-toggle:checked ~ .nav-links {
+        display: flex;
+    }
+
+    /* Expand background container */
+    #navbar:has(.nav-toggle:checked) {
+        padding: 22px 24px 16px;
+        border-radius: 24px;
+        background: rgba(10, 10, 15, 0.92);
+    }
+
+    /* Animate standard layout bars into an X close button */
+    .nav-toggle:checked ~ .hamburger span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+        background: #00c2ff;
+    }
+
+    .nav-toggle:checked ~ .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle:checked ~ .hamburger span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+        background: #00c2ff;
+    }
+}
+
+
+/* ==========================================================================
+   4. FOOTER
+   ========================================================================== */
+
+#footer {
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    padding: 40px;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    background: transparent;
+}
+
+
+/* ==========================================================================
+   5. HOME PAGE — index.html
+   ========================================================================== */
+
+/* --- Hero Section --- */
+#hero {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 80px;
+    position: relative;
+    background: transparent;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 700;
+    letter-spacing: -2px;
+    margin-bottom: 0.2em;
+    background: linear-gradient(to right, #ffffff, #a0d8ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 50px rgba(0, 194, 255, 0.2);
+    animation: fadeInDown 1s ease-out;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.5em;
+}
+
+.hero-content h3 {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 2px;
+}
+
+/* --- Hero CTA Button --- */
+.hero-cta {
+    margin-top: 40px;
+}
+
+.cta-button {
+    font-family: 'Space Grotesk', sans-serif;
+    display: inline-block;
+    padding: 14px 35px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 40px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+/* --- Pillars Section --- */
+#pillars {
+    position: relative;
+    background: transparent;
+    padding: 40px 20px 100px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #ffffff, #00c2ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-subtitle {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+.pillar-item {
+    position: relative;
+    background: rgba(25, 25, 35, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 40px 30px 35px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+    cursor: default;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.pillar-item:hover {
+    transform: translateY(-8px);
+    background: rgba(35, 35, 50, 0.6);
+    border-color: rgba(0, 194, 255, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 194, 255, 0.1);
+}
+
+.pillar-glow {
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(0, 194, 255, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.pillar-item:hover .pillar-glow {
+    opacity: 1;
+}
+
+.pillar-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 194, 255, 0.1);
+    border: 1px solid rgba(0, 194, 255, 0.2);
+    border-radius: 16px;
+    color: #00c2ff;
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.pillar-icon svg {
+    width: 30px;
+    height: 30px;
+}
+
+.pillar-item:hover .pillar-icon {
+    background: rgba(0, 194, 255, 0.2);
+    border-color: #00c2ff;
+    box-shadow: 0 0 30px rgba(0, 194, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.pillar-content {
+    position: relative;
+    z-index: 1;
+}
+
+.pillar-content h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.pillar-content p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+
+/* --- Keyframe Animations --- */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ==========================================================================
+   6. SHARED PAGE HERO (Non-Home Pages)
+   ========================================================================== */
+
+#heroNonHome {
+    margin-top: 150px;
+    text-align: center;
+    padding: 0 20px;
+}
+
+#heroNonHome h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 15px;
+    background: linear-gradient(to right, #ffffff, #00c2ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.schedule-subtitle {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 40px;
+}
+
+
+/* ==========================================================================
+   7. SHARED FORM ELEMENTS
+   ========================================================================== */
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.form-group label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.form-group .optional {
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 0.7rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    font-family: 'Space Grotesk', sans-serif;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 13px 16px;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    outline: none;
+    cursor: pointer;
+}
+
+.form-group input::placeholder,
+.form-group select:invalid,
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: rgba(0, 194, 255, 0.35);
+    background: rgba(0, 194, 255, 0.04);
+    box-shadow: 0 0 20px rgba(0, 194, 255, 0.08);
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3E%3Cpath d='M6 9L12 15L18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+}
+
+.form-group select option,
+.form-group select optgroup {
+    background: #1a1a25;
+    color: #ffffff;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.form-group select optgroup {
+    font-style: normal;
+    font-weight: 600;
+    color: #00c2ff;
+}
+
+
+/* ==========================================================================
+   8. EVENTS PAGE — events.html
+   ========================================================================== */
+
+#events-page {
+    position: relative;
+    background: transparent;
+    width: 100%;
+    padding-bottom: 80px;
+}
+
+.schedule-container {
+    max-width: 850px;
+    margin: 0 auto 100px;
+    padding: 0 25px;
+}
+
+/* --- Day Section --- */
+.day-section {
+    margin-bottom: 60px;
+}
+
+.day-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.day-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.06);
+    line-height: 1;
+    min-width: 90px;
+}
+
+.day-info h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.day-info p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 2px 0 0 0;
+    letter-spacing: 1px;
+}
+
+.day-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.1), transparent);
+    margin-left: 10px;
+}
+
+/* --- Event Cards --- */
+.event-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.event-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    background: rgba(25, 25, 35, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 20px 25px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.event-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: linear-gradient(to bottom, #00c2ff, transparent);
+    border-radius: 0 3px 3px 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.event-card:hover {
+    background: rgba(35, 35, 48, 0.55);
+    border-color: rgba(255, 255, 255, 0.12);
+    transform: translateX(5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.event-card:hover::before {
+    opacity: 1;
+}
+
+.event-time {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #00c2ff;
+    min-width: 85px;
+    letter-spacing: 1px;
+}
+
+.event-details {
+    flex: 1;
+}
+
+.event-details h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+    letter-spacing: 0.3px;
+}
+
+.event-meta {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.event-category {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    padding: 3px 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+}
+
+.event-venue {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.35);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.event-venue::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+}
+
+/* --- Event Badges --- */
+.event-badge {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.event-badge.live {
+    background: rgba(255, 51, 102, 0.12);
+    color: #ff3366;
+    border: 1px solid rgba(255, 51, 102, 0.3);
+    box-shadow: 0 0 15px rgba(255, 51, 102, 0.1);
+    animation: pulse-badge 2s infinite;
+}
+
+.event-badge.closing {
+    background: rgba(0, 194, 255, 0.1);
+    color: #00c2ff;
+    border: 1px solid rgba(0, 194, 255, 0.3);
+    box-shadow: 0 0 15px rgba(0, 194, 255, 0.1);
+}
+
+@keyframes pulse-badge {
+    0%, 100% { box-shadow: 0 0 15px rgba(255, 51, 102, 0.1); }
+    50% { box-shadow: 0 0 25px rgba(255, 51, 102, 0.25); }
+}
+
+
+/* ==========================================================================
+   9. GALLERY PAGE — gallery.html
+   ========================================================================== */
+/* ==========================================================================
+   GALLERY — COMING SOON STYLES
+   ========================================================================== */
+
+/* --- Coming Soon Placeholder --- */
+.gallery-coming-soon {
+    text-align: center;
+    padding: 60px 30px;
+    background: rgba(25, 25, 35, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    margin-bottom: 60px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: all 0.3s ease;
+}
+
+.gallery-coming-soon:hover {
+    border-color: rgba(0, 194, 255, 0.2);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.coming-soon-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    color: rgba(0, 194, 255, 0.5);
+}
+
+.coming-soon-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-coming-soon h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 15px 0;
+    letter-spacing: 0.5px;
+}
+
+.gallery-coming-soon p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 0 30px 0;
+}
+
+.gallery-coming-soon p strong {
+    color: #00c2ff;
+    font-weight: 600;
+}
+
+/* --- Teaser Section --- */
+.gallery-teaser-section {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.teaser-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+/* --- Horizontal Scrolling Deck --- */
+.gallery-teaser-deck {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+    padding: 10px 5px 25px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.gallery-teaser-deck::-webkit-scrollbar {
+    height: 6px;
+}
+
+.gallery-teaser-deck::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.gallery-teaser-deck::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.gallery-teaser-deck::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 194, 255, 0.3);
+}
+
+/* --- Teaser Card --- */
+.teaser-card {
+    flex: 0 0 280px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: all 0.3s ease;
+}
+
+.teaser-card-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: all 0.4s ease;
+}
+
+.teaser-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.75) saturate(0.8);
+    transition: all 0.4s ease;
+}
+
+.teaser-card-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.teaser-card:hover {
+    transform: translateY(-5px);
+}
+
+.teaser-card:hover .teaser-card-img {
+    border-color: rgba(0, 194, 255, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 194, 255, 0.1);
+}
+
+.teaser-card:hover .teaser-card-img img {
+    filter: brightness(1) saturate(1);
+    transform: scale(1.05);
+}
+
+.teaser-card:hover .teaser-card-label {
+    color: #00c2ff;
+}
+
+/* Teaser Deck Responsive */
+@media (max-width: 700px) {
+    .teaser-card {
+        flex: 0 0 220px;
+    }
+    
+    .gallery-coming-soon {
+        padding: 40px 20px;
+    }
+    
+    .gallery-coming-soon h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* ==========================================================================
+   10. TEAM PAGE — team.html
+   ========================================================================== */
+
+#team-page {
+    position: relative;
+    background: transparent;
+    width: 100%;
+    padding-bottom: 80px;
+}
+
+.team-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* --- Team Section --- */
+.team-section {
+    margin-bottom: 70px;
+}
+
+.team-section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+}
+
+.team-section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: #00c2ff;
+    border-radius: 2px;
+}
+
+/* --- Team Grid --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.team-grid.patrons {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 600px;
+}
+
+.team-grid.four-col {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* --- Team Card --- */
+.team-card {
+    position: relative;
+    background: rgba(25, 25, 35, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    background: rgba(35, 35, 48, 0.55);
+    border-color: rgba(0, 194, 255, 0.25);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 35px rgba(0, 194, 255, 0.08);
+}
+
+/* --- Team Card Glow --- */
+.team-card-glow {
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(0, 194, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.team-card:hover .team-card-glow {
+    opacity: 1;
+}
+
+/* --- Team Photo with Initials Fallback --- */
+.team-card-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    background: rgba(0, 194, 255, 0.1);
+}
+
+.team-card-photo::before {
+    content: attr(data-initials);
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #00c2ff;
+    z-index: 1;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.team-card-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(30%);
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.team-card-photo img.hidden {
+    display: none;
+}
+
+.team-card:hover .team-card-photo {
+    border-color: rgba(0, 194, 255, 0.5);
+    box-shadow: 0 0 25px rgba(0, 194, 255, 0.2);
+}
+
+.team-card:hover .team-card-photo img {
+    filter: grayscale(0%);
+    transform: scale(1.08);
+}
+
+.team-card.patron .team-card-photo {
+    width: 130px;
+    height: 130px;
+}
+
+.team-card.patron .team-card-photo::before {
+    font-size: 2.5rem;
+}
+
+/* --- Team Info --- */
+.team-card-info {
+    position: relative;
+    z-index: 1;
+}
+
+.team-card-info h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+    letter-spacing: 0.3px;
+}
+
+.team-role {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #00c2ff;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.team-dept {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+}
+
+
+/* ==========================================================================
+   11. SPONSORS PAGE — sponsors.html
+   ========================================================================== */
+
+#sponsors-page {
+    position: relative;
+    background: transparent;
+    width: 100%;
+    padding-bottom: 60px;
+}
+
+.sponsors-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* --- Sponsor Tier --- */
+.sponsor-tier {
+    margin-bottom: 60px;
+}
+
+.tier-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.tier-label h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin: 0;
+}
+
+.tier-icon {
+    color: #00c2ff;
+    font-size: 1rem;
+}
+
+.tier-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+    max-width: 80px;
+}
+
+/* --- Sponsor Grid --- */
+.sponsor-grid {
+    display: grid;
+    gap: 25px;
+    justify-content: center;
+}
+
+.title-tier {
+    grid-template-columns: minmax(300px, 450px);
+}
+
+.platinum-tier {
+    grid-template-columns: repeat(2, minmax(280px, 380px));
+}
+
+.gold-tier {
+    grid-template-columns: repeat(3, minmax(240px, 320px));
+}
+
+.silver-tier {
+    grid-template-columns: repeat(4, minmax(200px, 260px));
+}
+
+.community-tier {
+    grid-template-columns: repeat(3, minmax(200px, 280px));
+}
+
+/* --- Sponsor Card --- */
+.sponsor-card {
+    position: relative;
+    background: rgba(25, 25, 35, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 30px 25px;
+    text-align: center;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+.sponsor-card:hover {
+    transform: translateY(-8px);
+    background: rgba(35, 35, 48, 0.5);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+.sponsor-card.title {
+    background: rgba(25, 25, 40, 0.45);
+    border: 1px solid rgba(0, 194, 255, 0.2);
+    padding: 40px 30px;
+}
+
+.sponsor-card.title:hover {
+    border-color: rgba(0, 194, 255, 0.4);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 50px rgba(0, 194, 255, 0.12);
+}
+
+.sponsor-card.platinum:hover {
+    border-color: rgba(200, 200, 220, 0.3);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(200, 200, 220, 0.08);
+}
+
+.sponsor-card.gold:hover {
+    border-color: rgba(255, 193, 7, 0.2);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 35px rgba(255, 193, 7, 0.08);
+}
+
+/* --- Animated Title Border --- */
+.sponsor-border {
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 1.5px;
+    background: linear-gradient(135deg, transparent 30%, rgba(0, 194, 255, 0.3) 50%, transparent 70%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    animation: rotate-border 4s linear infinite;
+}
+
+@keyframes rotate-border {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 300% 0%; }
+}
+
+/* --- Sponsor Glow --- */
+.sponsor-card-glow {
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 130px;
+    height: 130px;
+    background: radial-gradient(circle, rgba(0, 194, 255, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.sponsor-card:hover .sponsor-card-glow {
+    opacity: 1;
+}
+
+.sponsor-card.gold .sponsor-card-glow {
+    background: radial-gradient(circle, rgba(255, 193, 7, 0.08) 0%, transparent 70%);
+}
+
+/* --- Sponsor Logo --- */
+.sponsor-logo {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+}
+
+.sponsor-logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: brightness(0.9);
+    transition: all 0.4s ease;
+}
+
+.sponsor-card:hover .sponsor-logo img {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+}
+
+.sponsor-card.title .sponsor-logo {
+    width: 130px;
+    height: 130px;
+}
+
+.sponsor-card.community .sponsor-logo {
+    width: 75px;
+    height: 75px;
+}
+
+/* --- Sponsor Info --- */
+.sponsor-info {
+    position: relative;
+    z-index: 1;
+}
+
+.sponsor-info h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 4px 0;
+    letter-spacing: 0.3px;
+}
+
+.sponsor-card.title .sponsor-info h3 {
+    font-size: 1.3rem;
+}
+
+.sponsor-info p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+}
+
+/* --- Sponsor CTA --- */
+.sponsor-cta {
+    padding: 20px 25px 80px;
+    text-align: center;
+}
+
+.sponsor-cta-card {
+    max-width: 550px;
+    margin: 0 auto;
+    background: rgba(25, 25, 35, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 45px 35px;
+    transition: all 0.3s ease;
+}
+
+.sponsor-cta-card:hover {
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.sponsor-cta-card h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 10px 0;
+    letter-spacing: 0.5px;
+}
+
+.sponsor-cta-card p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 0 30px 0;
+}
+
+
+/* ==========================================================================
+   12. CONTACT PAGE — contact.html
+   ========================================================================== */
+
+#contact-page {
+    position: relative;
+    background: transparent;
+    width: 100%;
+    padding-bottom: 60px;
+}
+
+.contact-container {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* --- Contact Info Column --- */
+.contact-info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contact-info-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    background: rgba(25, 25, 35, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 22px;
+    transition: all 0.3s ease;
+}
+
+.contact-info-card:hover {
+    background: rgba(35, 35, 48, 0.45);
+    border-color: rgba(255, 255, 255, 0.12);
+    transform: translateX(4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.contact-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 194, 255, 0.08);
+    border: 1px solid rgba(0, 194, 255, 0.15);
+    border-radius: 12px;
+    color: #00c2ff;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.contact-info-card:hover .contact-icon {
+    background: rgba(0, 194, 255, 0.15);
+    border-color: rgba(0, 194, 255, 0.3);
+    box-shadow: 0 0 20px rgba(0, 194, 255, 0.15);
+}
+
+.contact-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.contact-info-text h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 5px 0;
+    letter-spacing: 0.5px;
+}
+
+.contact-info-text p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.45);
+    margin: 0;
+}
+
+/* --- Social Links --- */
+.contact-social {
+    background: rgba(25, 25, 35, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 22px;
+    text-align: center;
+}
+
+.contact-social h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 18px 0;
+    letter-spacing: 1px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-link {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-link svg {
+    width: 20px;
+    height: 20px;
+}
+
+.social-link:hover {
+    background: rgba(0, 194, 255, 0.1);
+    border-color: rgba(0, 194, 255, 0.3);
+    color: #00c2ff;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 194, 255, 0.1);
+}
+
+/* --- Contact Form --- */
+.contact-form-card {
+    background: rgba(25, 25, 35, 0.35);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 40px 35px;
+    transition: all 0.3s ease;
+}
+
+.contact-form-card:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.contact-form-card h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+    letter-spacing: 0.5px;
+}
+
+.contact-form-card > p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0 0 30px 0;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --- Submit Button --- */
+.form-submit-btn {
+    font-family: 'Space Grotesk', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 14px 28px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #ffffff;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 5px;
+}
+
+.form-submit-btn svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+}
+
+.form-submit-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+.form-submit-btn:hover svg {
+    transform: translateX(3px) translateY(-3px);
+}
+
+/* --- Map Hint --- */
+.contact-map-hint {
+    padding: 0 25px 80px;
+    text-align: center;
+}
+
+.map-card {
+    max-width: 500px;
+    margin: 0 auto;
+    background: rgba(25, 25, 35, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 25px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.map-icon {
+    width: 40px;
+    height: 40px;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.map-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.map-card p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+
+.map-card span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+
+/* ==========================================================================
+   13. REGISTER PAGE — register.html
+   ========================================================================== */
+
+#register-page {
+    position: relative;
+    background: transparent;
+    width: 100%;
+    padding-bottom: 60px;
+}
+
+.register-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+.register-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+/* --- Register Info Cards --- */
+.register-info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.register-info-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    background: rgba(25, 25, 35, 0.3);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    padding: 22px 18px;
+    transition: all 0.3s ease;
+}
+
+.register-info-card:hover {
+    background: rgba(35, 35, 48, 0.45);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.register-info-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 194, 255, 0.08);
+    border: 1px solid rgba(0, 194, 255, 0.12);
+    border-radius: 10px;
+    color: #00c2ff;
+}
+
+.register-info-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.register-info-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.register-info-card p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* --- Back to Events Link --- */
+.back-to-events {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.45);
+    text-decoration: none;
+    padding: 14px;
+    background: rgba(25, 25, 35, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.back-to-events svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+.back-to-events:hover {
+    color: #00c2ff;
+    border-color: rgba(0, 194, 255, 0.2);
+    background: rgba(0, 194, 255, 0.05);
+}
+
+.back-to-events:hover svg {
+    transform: translateX(-3px);
+}
+
+/* --- Register Form --- */
+.register-form-card {
+    background: rgba(25, 25, 35, 0.35);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 40px 35px;
+    transition: all 0.3s ease;
+}
+
+.register-form-card:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.register-form-card h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+    letter-spacing: 0.5px;
+}
+
+.register-form-card > p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0 0 30px 0;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* --- Register Submit Button --- */
+.register-submit-btn {
+    font-family: 'Space Grotesk', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 15px 30px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #ffffff;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.register-submit-btn svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+}
+
+.register-submit-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+.register-submit-btn:hover svg {
+    transform: translateX(4px);
+}
+
+
+/* ==========================================================================
+   14. RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+
+/* --- Navigation --- */
+@media (max-width: 768px) {
+    #navbar {
+        gap: 1.5rem;
+        padding: 14px 25px;
+        font-size: 0.85rem;
+        top: 15px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.1rem;
+        letter-spacing: 2px;
+    }
+
+    .pillars-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* --- Events --- */
+@media (max-width: 600px) {
+    .event-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 18px 20px;
+    }
+
+    .event-time {
+        min-width: auto;
+    }
+
+    .event-meta {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .day-number {
+        font-size: 3rem;
+        min-width: 60px;
+    }
+
+    .day-info h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* --- Gallery --- */
+@media (max-width: 900px) {
+    .gallery-container {
+        columns: 2;
+        column-gap: 15px;
+    }
+
+    .gallery-item {
+        margin-bottom: 15px;
+        border-radius: 16px;
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-container {
+        columns: 1;
+        padding: 0 20px;
+    }
+
+    .gallery-overlay {
+        padding: 20px;
+        opacity: 1;
+        background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.7) 0%,
+            rgba(0, 0, 0, 0.1) 60%,
+            transparent 100%
+        );
+    }
+
+    .gallery-info {
+        transform: translateY(0);
+    }
+}
+
+/* --- Team --- */
+@media (max-width: 900px) {
+    .team-grid,
+    .team-grid.four-col {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .team-grid.patrons {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 500px) {
+    .team-grid,
+    .team-grid.four-col,
+    .team-grid.patrons {
+        grid-template-columns: 1fr;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .team-card {
+        padding: 22px 20px;
+    }
+
+    .team-card-photo {
+        width: 85px;
+        height: 85px;
+    }
+
+    .team-card-photo::before {
+        font-size: 1.5rem;
+    }
+
+    .team-card.patron .team-card-photo {
+        width: 110px;
+        height: 110px;
+    }
+
+    .team-card.patron .team-card-photo::before {
+        font-size: 2rem;
+    }
+}
+
+/* --- Sponsors --- */
+@media (max-width: 1000px) {
+    .silver-tier {
+        grid-template-columns: repeat(2, minmax(200px, 280px));
+    }
+}
+
+@media (max-width: 768px) {
+    .platinum-tier {
+        grid-template-columns: minmax(260px, 400px);
+    }
+
+    .gold-tier,
+    .community-tier {
+        grid-template-columns: repeat(2, minmax(200px, 280px));
+    }
+
+    .tier-label h2 {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+}
+
+@media (max-width: 500px) {
+    .gold-tier,
+    .silver-tier,
+    .community-tier {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .title-tier {
+        grid-template-columns: 1fr;
+    }
+
+    .sponsor-card {
+        padding: 25px 20px;
+    }
+
+    .sponsor-card.title {
+        padding: 30px 25px;
+    }
+
+    .tier-label {
+        gap: 12px;
+    }
+
+    .tier-label h2 {
+        font-size: 1rem;
+    }
+}
+
+/* --- Contact --- */
+@media (max-width: 768px) {
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form-card {
+        padding: 30px 22px;
+    }
+
+    .contact-info-col {
+        order: 2;
+    }
+
+    .contact-form-col {
+        order: 1;
+    }
+}
+
+@media (max-width: 500px) {
+    .contact-form-card {
+        padding: 25px 18px;
+        border-radius: 20px;
+    }
+
+    .contact-form-card h2 {
+        font-size: 1.3rem;
+    }
+
+    .contact-info-card {
+        padding: 18px;
+    }
+
+    .social-links {
+        gap: 10px;
+    }
+
+    .social-link {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+/* --- Register --- */
+@media (max-width: 768px) {
+    .register-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .register-info-col {
+        order: 2;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .register-info-card {
+        flex: 1;
+        min-width: 140px;
+    }
+
+    .back-to-events {
+        width: 100%;
+    }
+
+    .register-form-col {
+        order: 1;
+    }
+
+    .register-form-card {
+        padding: 30px 22px;
+    }
+}
+
+@media (max-width: 500px) {
+    .register-info-col {
+        flex-direction: column;
+    }
+
+    .register-info-card {
+        flex-direction: row;
+        text-align: left;
+        gap: 15px;
+        padding: 16px 18px;
+    }
+
+    .register-info-card h3 {
+        margin-bottom: 2px;
+    }
+
+    .register-form-card {
+        padding: 25px 18px;
+        border-radius: 20px;
+    }
+
+    .register-form-card h2 {
+        font-size: 1.3rem;
+    }
+}
+
+/* ==========================================================================
+   15. JAVASCRIPT-DRIVEN STYLES
+   ========================================================================== */
+
+/* --- Welcome Message --- */
+.welcome-msg {
+    animation: fadeInDown 0.5s ease-out;
+}
+
+/* --- Participants Section --- */
+.participants-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.participants-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.participants-header h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+}
+
+.participants-header h3 span {
+    color: #00c2ff;
+}
+
+.participants-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-input {
+    font-family: 'Space Grotesk', sans-serif;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px 14px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 0.85rem;
+    outline: none;
+    width: 200px;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    border-color: rgba(0, 194, 255, 0.35);
+    box-shadow: 0 0 15px rgba(0, 194, 255, 0.08);
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.25);
+}
+
+.clear-all-btn {
+    font-family: 'Space Grotesk', sans-serif;
+    background: rgba(255, 51, 102, 0.1);
+    border: 1px solid rgba(255, 51, 102, 0.25);
+    color: #ff3366;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.clear-all-btn:hover {
+    background: rgba(255, 51, 102, 0.2);
+    box-shadow: 0 0 15px rgba(255, 51, 102, 0.2);
+}
+
+/* --- Participants List --- */
+.participants-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 350px;
+    overflow-y: auto;
+}
+
+.participant-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 12px 16px;
+    gap: 15px;
+}
+
+.participant-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.participant-info strong {
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+
+.participant-info span {
+    color: #00c2ff;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.participant-info small {
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 0.7rem;
+}
+
+.participant-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.participant-actions button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px 6px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.participant-actions button:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* --- Task Manager --- */
+.task-manager-section {
+    margin-top: 30px;
+}
+
+.task-manager-card {
+    background: rgba(25, 25, 35, 0.35);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 35px;
+}
+
+.task-manager-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 20px 0;
+}
+
+.task-input-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.task-input {
+    flex: 1;
+    font-family: 'Space Grotesk', sans-serif;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px 16px;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.task-input:focus {
+    border-color: rgba(0, 194, 255, 0.35);
+    box-shadow: 0 0 15px rgba(0, 194, 255, 0.08);
+}
+
+.task-add-btn {
+    font-family: 'Space Grotesk', sans-serif;
+    background: rgba(0, 194, 255, 0.15);
+    border: 1px solid rgba(0, 194, 255, 0.25);
+    color: #00c2ff;
+    padding: 12px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.task-add-btn:hover {
+    background: rgba(0, 194, 255, 0.25);
+    box-shadow: 0 0 20px rgba(0, 194, 255, 0.2);
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 12px 16px;
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    opacity: 0.4;
+}
+
+.task-text {
+    color: #ffffff;
+    font-size: 0.9rem;
+}
+
+.task-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.task-actions button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px 6px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.task-actions button:hover {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+/* --- Lightbox --- */
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 3000;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(10px);
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox-img {
+    max-width: 85vw;
+    max-height: 85vh;
+    border-radius: 12px;
+    object-fit: contain;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    font-size: 2.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    z-index: 3001;
+    transition: color 0.3s ease;
+}
+
+.lightbox-close:hover {
+    color: #ff3366;
+}
+
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 3001;
+}
+
+.lightbox-nav:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.lightbox-prev { left: 25px; }
+.lightbox-next { right: 25px; }
+
+.lightbox-controls {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.lightbox-btn {
+    font-family: 'Space Grotesk', sans-serif;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.lightbox-btn:hover {
+    background: rgba(0, 194, 255, 0.2);
+    border-color: rgba(0, 194, 255, 0.3);
+}
+
+/* ==========================================================================
+   16. WELCOME MODAL
+   ========================================================================== */
+
+.welcome-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+    background: rgba(6, 8, 13, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    padding: 20px;
+}
+
+.welcome-overlay.show {
+    opacity: 1;
+}
+
+.welcome-modal {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(25, 25, 35, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 194, 255, 0.2);
+    border-radius: 24px;
+    padding: 40px 32px;
+    text-align: center;
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.4s ease;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-overlay.show .welcome-modal {
+    transform: translateY(0) scale(1);
+}
+
+.welcome-modal-kicker {
+    display: inline-block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #00c2ff;
+    background: rgba(0, 194, 255, 0.1);
+    border: 1px solid rgba(0, 194, 255, 0.25);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+}
+
+.welcome-modal h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 8px;
+}
+
+.welcome-modal p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 22px;
+}
+
+.welcome-input {
+    width: 100%;
+    font-family: 'Space Grotesk', sans-serif;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 13px 16px;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 0.9rem;
+    outline: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin-bottom: 22px;
+}
+
+.welcome-input:focus {
+    border-color: rgba(0, 194, 255, 0.4);
+    background: rgba(0, 194, 255, 0.05);
+    box-shadow: 0 0 20px rgba(0, 194, 255, 0.1);
+}
+
+.welcome-input::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+.welcome-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.welcome-btn-skip {
+    flex: 1;
+    font-family: 'Space Grotesk', sans-serif;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.5);
+    padding: 13px 18px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.welcome-btn-skip:hover {
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+}
+
+.welcome-btn-primary {
+    flex: 1.4;
+    font-family: 'Space Grotesk', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(0, 194, 255, 0.15);
+    border: 1px solid rgba(0, 194, 255, 0.3);
+    color: #00c2ff;
+    padding: 13px 18px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.welcome-btn-primary svg {
+    width: 16px;
+    height: 16px;
+    transition: transform 0.3s ease;
+}
+
+.welcome-btn-primary:hover {
+    background: rgba(0, 194, 255, 0.25);
+    box-shadow: 0 0 20px rgba(0, 194, 255, 0.2);
+}
+
+.welcome-btn-primary:hover svg {
+    transform: translateX(3px);
+}
+
+/* --- Welcome Toast (post-greeting nameplate) --- */
+.welcome-toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    z-index: 999;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #ffffff;
+    background: rgba(20, 20, 30, 0.75);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(0, 194, 255, 0.25);
+    padding: 12px 22px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.welcome-toast strong {
+    color: #00c2ff;
+}
+
+.welcome-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 480px) {
+    .welcome-modal {
+        padding: 32px 22px;
+    }
+
+    .welcome-actions {
+        flex-direction: column;
+    }
+}
+
+
+/* ==========================================================================
+   17. ADMIN PANEL
+   ========================================================================== */
+
+.admin-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 100px;
+}
+
+.admin-gate {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 45vh;
+}
+
+.admin-gate-card {
+    width: 100%;
+    max-width: 380px;
+    background: rgba(25, 25, 35, 0.35);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 40px 35px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.admin-gate-card:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.admin-gate-icon {
+    width: 46px;
+    height: 46px;
+    margin: 0 auto 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #00c2ff;
+    background: rgba(0, 194, 255, 0.1);
+    border: 1px solid rgba(0, 194, 255, 0.25);
+    border-radius: 14px;
+}
+
+.admin-gate-icon svg {
+    width: 22px;
+    height: 22px;
+}
+
+.admin-gate-card h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 6px;
+}
+
+.admin-gate-card > p {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 26px;
+}
+
+.admin-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    text-align: left;
+}
+
+.admin-login-error {
+    display: none;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.75rem;
+    color: #ff3366;
+    margin-top: -8px;
+    letter-spacing: 0.3px;
+}
+
+.admin-dashboard {
+    animation: fadeInDown 0.5s ease-out;
+}
+
+.admin-dashboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 40px 0 25px;
+}
+
+.admin-dashboard-header h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.admin-participants-intro {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0 0 20px 0;
+}
+
+
+/* ==========================================================================
+   18. ADMIN PANEL — SECURITY & FEATURE ADDITIONS
+   ========================================================================== */
+
+/* --- Lockout / session-expired warning variant --- */
+.admin-login-error.warning {
+    color: #ffb020;
+}
+
+/* --- Stats strip --- */
+.admin-stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.admin-stat-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: rgba(0, 194, 255, 0.04);
+    border: 1px solid rgba(0, 194, 255, 0.15);
+    border-radius: 16px;
+    padding: 18px 12px;
+    text-align: center;
+}
+
+.admin-stat-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #00c2ff;
+}
+
+.admin-stat-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 600px) {
+    .admin-stats-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- Export CSV button --- */
+.export-btn {
+    font-family: 'Space Grotesk', sans-serif;
+    background: rgba(0, 194, 255, 0.1);
+    border: 1px solid rgba(0, 194, 255, 0.25);
+    color: #00c2ff;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.export-btn:hover {
+    background: rgba(0, 194, 255, 0.2);
+    box-shadow: 0 0 15px rgba(0, 194, 255, 0.2);
+}
+
+/* --- Access Log --- */
+.admin-log-section {
+    margin-top: 30px;
+}
+
+.admin-log-card {
+    background: rgba(25, 25, 35, 0.35);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 35px;
+}
+
+.admin-log-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.admin-log-card h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+}
+
+.admin-log-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+.admin-log-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 3px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 10px 14px;
+}
+
+.admin-log-item.success {
+    border-left-color: rgba(0, 194, 255, 0.5);
+}
+
+.admin-log-item.failed {
+    border-left-color: rgba(255, 51, 102, 0.5);
+}
+
+.admin-log-time {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.35);
+}
+
+.admin-log-status {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.75);
+}

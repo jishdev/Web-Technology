@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Lost in the Matrix | HASH '27</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* ==========================================================================
+           404 PAGE — CUSTOM STYLES
+           ========================================================================== */
+
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .error-container {
+            max-width: 600px;
+        }
+
+        .error-code {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(6rem, 15vw, 10rem);
+            font-weight: 700;
+            letter-spacing: -4px;
+            background: linear-gradient(135deg, #00c2ff, #ff3366, #00c2ff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 3s ease infinite;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .error-emoji {
+            font-size: 4rem;
+            animation: float 3s ease-in-out infinite;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .error-container h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(1.4rem, 3vw, 1.8rem);
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .error-container p {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 35px;
+            line-height: 1.6;
+        }
+
+        .error-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .error-btn {
+            font-family: 'Space Grotesk', sans-serif;
+            display: inline-block;
+            padding: 13px 28px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .error-btn.primary {
+            color: #0a0a0f;
+            background: linear-gradient(135deg, #00c2ff, #007bff);
+            box-shadow: 0 6px 20px rgba(0, 194, 255, 0.3);
+        }
+
+        .error-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 194, 255, 0.5);
+        }
+
+        .error-btn.secondary {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .error-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* Floating decorative elements */
+        .error-decor {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.06;
+            font-size: 8rem;
+            animation: float-slow 8s ease-in-out infinite;
+        }
+
+        .error-decor:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .error-decor:nth-child(2) { top: 60%; right: 5%; animation-delay: 2s; font-size: 5rem; }
+        .error-decor:nth-child(3) { bottom: 15%; left: 15%; animation-delay: 4s; font-size: 6rem; }
+        .error-decor:nth-child(4) { top: 30%; right: 15%; animation-delay: 6s; }
+
+        @keyframes float-slow {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Search box */
+        .error-search {
+            margin-top: 30px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .error-search input {
+            font-family: 'Space Grotesk', sans-serif;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 18px;
+            border-radius: 30px;
+            color: #ffffff;
+            font-size: 0.9rem;
+            outline: none;
+            width: 250px;
+            transition: all 0.3s ease;
+        }
+
+        .error-search input:focus {
+            border-color: rgba(0, 194, 255, 0.4);
+            box-shadow: 0 0 20px rgba(0, 194, 255, 0.1);
+        }
+
+        .error-search button {
+            font-family: 'Space Grotesk', sans-serif;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .error-search button:hover {
+            background: rgba(0, 194, 255, 0.15);
+            border-color: rgba(0, 194, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Static Background -->
+    <div class="events-static-bg"></div>
+
+    <!-- Floating decorations -->
+    <div class="error-decor">{ }</div>
+    <div class="error-decor">&lt;/&gt;</div>
+    <div class="error-decor">#</div>
+    <div class="error-decor">( )</div>
+
+    <!-- Error Content -->
+    <main class="error-page">
+        <div class="error-container">
+            <span class="error-emoji">🔮</span>
+            <h1 class="error-code">404</h1>
+            <h2>You've drifted into uncharted code space</h2>
+            <p>
+                This page has been deleted, moved, or never existed in this dimension.<br>
+                Maybe a semicolon was missing somewhere? 🤔
+            </p>
+
+            <div class="error-buttons">
+                <a href="index.html" class="error-btn primary">🏠 Back to Home</a>
+                <a href="events.html" class="error-btn secondary">📅 View Events</a>
+            </div>
+
+            <!-- Quick search -->
+            <div class="error-search">
+                <input type="text" id="errorSearch" placeholder="Search HASH '27...">
+                <button onclick="searchSite()">🔍 Search</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function searchSite() {
+            const query = document.getElementById('errorSearch').value.trim().toLowerCase();
+            const pages = {
+                'home': 'index.html',
+                'events': 'events.html',
+                'schedule': 'events.html',
+                'register': 'register.html',
+                'registration': 'register.html',
+                'gallery': 'gallery.html',
+                'photos': 'gallery.html',
+                'team': 'team.html',
+                'organizers': 'team.html',
+                'sponsors': 'sponsors.html',
+                'contact': 'contact.html',
+                'about': 'index.html'
+            };
+            
+            if (pages[query]) {
+                window.location.href = pages[query];
+            } else if (query) {
+                alert(`🔍 No results for "${query}". Try: home, events, register, gallery, team, sponsors, contact`);
+            }
+        }
+
+        // Allow Enter key to search
+        document.getElementById('errorSearch').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') searchSite();
+        });
+    </script>
+
+</body>
+</html>

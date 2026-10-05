@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Admin - TechFest 2027</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/app.js"></script>
+</head>
+<body>
+
+    <!-- Static Gradient Background -->
+    <div class="events-static-bg"></div>
+
+    <!-- Navigation Bar -->
+    <nav id="navbar">
+        <input type="checkbox" id="nav-toggle" class="nav-toggle">
+        <label for="nav-toggle" class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <!-- Added container wrapper around links -->
+        <div class="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="events.html">EVENTS</a>
+            <a href="register.html">REGISTER</a>
+            <a href="gallery.html">GALLERY</a>
+            <a href="team.html">TEAM</a>
+            <a href="sponsors.html">SPONSORS</a>
+            <a href="contact.html">CONTACT</a>
+        </div>
+    </nav>
+
+    <header id="heroNonHome">
+        <h1>ADMIN</h1>
+        <p class="schedule-subtitle">Organizer access only</p>
+    </header>
+
+    <main id="admin-page">
+        <div class="admin-container">
+
+            <!-- Password Gate -->
+            <div id="admin-gate" class="admin-gate">
+                <div class="admin-gate-card">
+                    <div class="admin-gate-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="4" y="10" width="16" height="10" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                            <path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="12" cy="15" r="1.4" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h2>Admin Access</h2>
+                    <p>Enter your credentials to manage HASH '27</p>
+
+                    <form id="admin-login-form" class="admin-login-form" onsubmit="event.preventDefault();">
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input type="text" id="admin-username" placeholder="Username" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" id="admin-password" placeholder="Password" autocomplete="off" required>
+                        </div>
+                        <span id="admin-login-error" class="admin-login-error"></span>
+                        <button type="submit" id="admin-login-btn" class="register-submit-btn">
+                            <span>Authenticate</span>
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 12H19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M12 5L19 12L12 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Dashboard (shown after successful login) -->
+            <div id="admin-dashboard" class="admin-dashboard" style="display:none;">
+                <div class="admin-dashboard-header">
+                    <h2>Admin Dashboard</h2>
+                    <button id="admin-logout-btn" class="clear-all-btn">Log Out</button>
+                </div>
+
+                <div class="register-form-card" id="admin-participants-mount"></div>
+
+                <div id="admin-tasks-mount"></div>
+
+                <div id="admin-log-mount"></div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer id="footer">
+        <p>&copy; 2027 HASH MBCET <br> All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>
