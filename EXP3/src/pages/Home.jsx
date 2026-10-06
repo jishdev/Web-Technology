@@ -1,0 +1,240 @@
+import React from "react";
+
+export default function Home() {
+  return (
+<>
+  {/* Global Video Background */}
+  <div className="global-video-bg">
+    <video
+      autoPlay=""
+      loop=""
+      muted=""
+      playsInline=""
+      className="background-video"
+    >
+      <source src="./assests/background.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div className="video-overlay" />
+  </div>
+  {/* Navigation Bar */}
+  <nav id="navbar">
+    <input type="checkbox" id="nav-toggle" className="nav-toggle" />
+    <label htmlFor="nav-toggle" className="hamburger">
+      <span />
+      <span />
+      <span />
+    </label>
+    {/* Added container wrapper around links */}
+    <div className="nav-links">
+      <a href="./pages/index.html">HOME</a>
+      <a href="./pages/events.html">EVENTS</a>
+      <a href="./pages/register.html">REGISTER</a>
+      <a href="./pages/gallery.html">GALLERY</a>
+      <a href="./pages/team.html">TEAM</a>
+      <a href="./pages/sponsors.html">SPONSORS</a>
+      <a href="./pages/contact.html">CONTACT</a>
+    </div>
+  </nav>
+  {/* Hero Section */}
+  <header id="hero">
+    <div className="hero-content">
+      <h1>HASH '27</h1>
+      <h2 className="hero-subtitle">
+        TechFest Department of Computer Science and Engineering
+      </h2>
+      <h3>Mar Baselios College of Engineering and Technology</h3>
+      <div className="hero-cta">
+        <a href="./pages/events.html" className="cta-button">
+          Explore Events
+        </a>
+      </div>
+    </div>
+  </header>
+  {/* Pillars Section (Replaces Cards) */}
+  <section id="pillars">
+    <div className="section-header">
+      <h2 className="section-title">The Pillars of HASH</h2>
+      <p className="section-subtitle">Four domains. Infinite possibilities.</p>
+    </div>
+    <div className="pillars-grid">
+      {/* Pillar 1: Hackathon */}
+      <div className="pillar-item">
+        <div className="pillar-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 2L2 7L12 12L22 7L12 2Z"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M2 17L12 22L22 17"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M2 12L12 17L22 12"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
+        <div className="pillar-content">
+          <h3>Hackathon</h3>
+          <p>
+            48 hours of relentless coding, innovation, and problem-solving.
+            Build the future, one line at a time.
+          </p>
+        </div>
+        <div className="pillar-glow" />
+      </div>
+      {/* Pillar 2: Workshops */}
+      <div className="pillar-item">
+        <div className="pillar-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </div>
+        <div className="pillar-content">
+          <h3>Workshops</h3>
+          <p>
+            Hands-on sessions with industry experts. Master cutting-edge tools
+            and frameworks.
+          </p>
+        </div>
+        <div className="pillar-glow" />
+      </div>
+      {/* Pillar 3: Competitions */}
+      <div className="pillar-item">
+        <div className="pillar-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M18 20V10"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M12 20V4"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M6 20V14"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <circle
+              cx={18}
+              cy={8}
+              r={2}
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
+            <circle
+              cx={12}
+              cy={2}
+              r={2}
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
+            <circle
+              cx={6}
+              cy={12}
+              r={2}
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
+          </svg>
+        </div>
+        <div className="pillar-content">
+          <h3>Competitions</h3>
+          <p>
+            Test your mettle in coding battles, design sprints, and tech
+            quizzes. Glory awaits.
+          </p>
+        </div>
+        <div className="pillar-glow" />
+      </div>
+      {/* Pillar 4: Guest Talks */}
+      <div className="pillar-item">
+        <div className="pillar-icon">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M15 12C17.2091 12 19 10.2091 19 8C19 5.79086 17.2091 4 15 4C12.7909 4 11 5.79086 11 8C11 10.2091 12.7909 12 15 12Z"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M22 20C22 17.7909 19.3137 16 16 16C12.6863 16 10 17.7909 10 20"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+            <path
+              d="M9 20C9 18.3431 7.65685 17 6 17C4.34315 17 3 18.3431 3 20"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
+            <path
+              d="M6 14C7.65685 14 9 12.6569 9 11C9 9.34315 7.65685 8 6 8C4.34315 8 3 9.34315 3 11C3 12.6569 4.34315 14 6 14Z"
+              stroke="currentColor"
+              strokeWidth="1.5"
+            />
+          </svg>
+        </div>
+        <div className="pillar-content">
+          <h3>Guest Talks</h3>
+          <p>
+            Insights from visionaries and tech leaders. Get inspired by the best
+            in the industry.
+          </p>
+        </div>
+        <div className="pillar-glow" />
+      </div>
+    </div>
+  </section>
+  {/* Footer */}
+  <footer id="footer">
+    <p>
+      © 2027 HASH MBCET <br /> All Rights Reserved
+    </p>
+  </footer>
+</>
+
+  );
+}
