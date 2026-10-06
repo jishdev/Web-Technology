@@ -1,0 +1,6 @@
+$kind: http-request
+url: "{{baseUrl}}/contacts"
+method: GET
+headers:
+  Authorization: Bearer {{token}}
+order: 10000

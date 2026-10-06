@@ -1,0 +1,13 @@
+# Use this workspace to collaborate
+workspace:
+  id: 276bad8d-bd96-419e-84d5-b0d60488a206
+
+localResources:
+  collections:
+    - ../backend/postman/HASH TechFest 2027 API
+
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+
+cloudResources:
+  collections:
+    ../backend/postman/HASH TechFest 2027 API: 91b9076adaed94f6808644f40a761fc0

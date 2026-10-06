@@ -1,0 +1,12 @@
+$kind: http-request
+url: "{{baseUrl}}/auth/login"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: '{"username":"ADMINMBCET","password":"change-this-password"}'
+scripts:
+  - type: afterResponse
+    code: if (pm.response.code === 200) { pm.collectionVariables.set('token', pm.response.json().token); }
+order: 2000

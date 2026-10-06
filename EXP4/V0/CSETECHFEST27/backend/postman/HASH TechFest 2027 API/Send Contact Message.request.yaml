@@ -1,0 +1,9 @@
+$kind: http-request
+url: "{{baseUrl}}/contacts"
+method: POST
+headers:
+  Content-Type: application/json
+body:
+  type: text
+  content: '{"name":"Test User","email":"test@example.com","subject":"Test message","message":"Hello from Postman."}'
+order: 9000

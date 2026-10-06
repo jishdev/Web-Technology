@@ -1,0 +1,6 @@
+$kind: http-request
+url: "{{baseUrl}}/tasks"
+method: GET
+headers:
+  Authorization: Bearer {{token}}
+order: 12000

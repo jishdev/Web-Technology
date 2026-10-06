@@ -1,0 +1,7 @@
+$kind: collection
+description: Postman collection for the Express + MongoDB backend.
+variables:
+  baseUrl: http://localhost:5000/api
+  token: ""
+  registrationId: ""
+  taskId: ""

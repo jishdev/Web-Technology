@@ -1,0 +1,6 @@
+$kind: http-request
+url: "{{baseUrl}}/admin/audit"
+method: DELETE
+headers:
+  Authorization: Bearer {{token}}
+order: 15000

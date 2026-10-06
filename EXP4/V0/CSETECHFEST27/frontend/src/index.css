@@ -1,0 +1,2 @@
+/* Global reset is intentionally tiny; page tokens and components live in App.css. */
+html,body,#root{min-height:100%}
